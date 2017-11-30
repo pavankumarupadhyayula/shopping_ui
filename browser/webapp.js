@@ -14,14 +14,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+app.use(cookieParser())
 
 app.use('/v1', express.static('www'));
 
-app.get('/:clientId', (req, res) => {
+app.get('/v1/:clientId', (req, res) => {
 
-    console.log(req.params);
-
-    //res.redirect('/v1/index.html');
+    console.log(req.params.clientId);
+    res.cookie('clientId', req.params.clientId);
+    res.redirect('/v1/index.html');
 })
 
 app.listen(app.get('PORT'), (req, res) => {
