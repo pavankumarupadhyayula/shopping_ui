@@ -1,15 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="payment">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link type="text/css" rel="stylesheet" href="css/styles.css" />
+
 </head>
 
 <body>
-    <h3>Hello World!</h3>
+    <div class="container">
+        <header class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills float-right">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Payments</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-heading-danger">Shopping</h3>
+        </header>
+
+        <!-- items -->
+
+        <div class="row items-payment" ng-controller="mainCtrl">
+            <div class="col-lg-12">
+                <form>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-3 col-form-label">Name on Card </label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" ng-model="card.fullName" placeholder="Name on card">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-3 col-form-label">Card Number</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" ng-model="card.accountNumber" placeholder="Card Number">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-3 col-form-label">Expiratoin</label>
+                        <div class="col-sm-9">
+                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" ng-model="card.expirationMonth">
+                                <option selected value="0">Month</option>
+                                <option ng-repeat="x in month" value="{{x}}">{{x}}</option>
+                                  
+                              </select>
+                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" ng-model="card.expirationYear">
+                                <option selected value="0">Year</option>
+                                <option ng-repeat="x in year" value="{{x}}">{{x}}</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colFormLabel" class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-9">
+                            <button class="btn btn-danger form-control" ng-click="submit()">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- ./items -->
+
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-cookies.min.js"></script>
+    <script type=" text/javascript " src="scripts/webapp.js "></script>
 </body>
 
 </html>

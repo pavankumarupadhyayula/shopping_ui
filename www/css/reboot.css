@@ -1,0 +1,25 @@
+.header {
+    width: 50%;
+    margin: 2% auto;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #868e96;
+}
+
+a.active {
+    background-color: #B71C1C !important;
+    cursor: default;
+}
+
+.text-heading-danger {
+    color: #B71C1C !important;
+}
+
+.items-payment {
+    width: 50%;
+    margin: 2% auto!important;
+    padding-bottom: 2%;
+}
+
+.btn-danger {
+    background-color: #B71C1C !important;
+}
