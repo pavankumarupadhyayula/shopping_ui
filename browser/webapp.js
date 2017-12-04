@@ -50,48 +50,55 @@ if (!fs.existsSync('payment_request')) {
 app.post('/payment', (req, res, next) => {
     //console.log(req.body);
 
+    let items = req.body.item;
+    let a = '';
+    for (let i = 0; i < items.length; i++) {
+        a += `<item id="${i}"><unitPrice>${items[i].price}</unitPrice><quantity>${items[i].quantity}</quantity></item>`;
+
+    }
+
+
     let cyber_xml = `<?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
- <soapenv:Header>
-   <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
-      <wsse:UsernameToken>
-       <wsse:Username>29081988</wsse:Username>
-       <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">cufdZkJTGLpH9tup7OMRFf7uvITpz22WMDeNsf5JQ6sWh7SIxTSmIbSs+8cqmLVDxdPDylFrVlpmTcqxLWI4JcTLZFBG8FPwGaO6wgLHgyi9NdJAFyy2d+hUybHyOy0ae4GIuSbeXvRl2GfWTDUlIhyWtMAU6VcKz0h44pO236NGX4a8TG2ObmopF5SzlH7hS7Wv646yUHaB/b9WCKBWpySZHoKNW/MY/d3hJu+tYtTs/oN2+m/9zB2IljL5kv7iBNnFEkW89zeou+QwgUnpKD0fX4qKftNHRuGWqTFLQjf9nrBxS/a6q7eSkyjsbbHWGJm0Kx1OLsDTWEZEiEFReQ==</wsse:Password>
-     </wsse:UsernameToken>
-   </wsse:Security>
- </soapenv:Header>
- <soapenv:Body>
-   <requestMessage xmlns="urn:schemas-cybersource-com:transaction-data-1.142">
-     <merchantID>29081988</merchantID>
-     <merchantReferenceCode>MRC-123</merchantReferenceCode>
-     <billTo>
-       <firstName>${req.body.billTo.firstname}</firstName>
-       <lastName>${req.body.billTo.lastname}</lastName>
-       <street1>${req.body.billTo.street1}</street1>
-       <street2>${req.body.billTo.street2}</street2>
-       <city>${req.body.billTo.city}</city>
-       <state>${req.body.billTo.state}</state>
-       <postalCode>${req.body.billTo.zipcode}</postalCode>
-       <country>${req.body.billTo.country}</country>
-       <email>${req.body.billTo.email}</email>
-     </billTo>
-     <item id="0">
-       <unitPrice>${req.body.item.unitPrice}</unitPrice>
-       <quantity>${req.body.item.quantity}</quantity>
-     </item>
-     <purchaseTotals>
-       <currency>${req.body.purchaseTotals.currency}</currency>
-     </purchaseTotals>
-     <card>
-       <fullName>${req.body.card.fullName}</fullName>
-       <accountNumber>${req.body.card.accountNumber}</accountNumber>
-       <expirationMonth>${req.body.card.expirationMonth}</expirationMonth>
-       <expirationYear>${req.body.card.expirationYear}</expirationYear>
-     </card>
-     <ccAuthService run="true"/>
-   </requestMessage>
- </soapenv:Body>
-</soapenv:Envelope>`;
+    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+     <soapenv:Header>
+       <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+          <wsse:UsernameToken>
+           <wsse:Username>29081990</wsse:Username>
+           <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">ZCScmdZ2kBCOmbZwCzB+Jtx33ZwC5EQNd3j5z/hMA+xwnbc1Qebu6l9QPCzqH4LHUx1B2kxJ+QQKGk/LPKwHH60u9UxLxxjVYnuNV2ozW9u86ev/WJwAyQ3+AF19InVPjPAMlHHf6l5lvPgeN+MZQ5UC0elhvpROqUhNukMoVZBcUKXWSBcB5GdGTTXq7s+zHhE7mHGUUYxp+YjgxlGXicDOR6Y7s7Tbt1NawkyzCIfjIXhIz46h9KCuJRtqw0zzJE3B13MKyaKteeguKj+XMmMPjzDISvV9tJSxlLoW9Ja43Td/ylKtwLcITGPdPwAugzl1DcM+pypzcKUuWqFtWQ==</wsse:Password>
+         </wsse:UsernameToken>
+       </wsse:Security>
+     </soapenv:Header>
+     <soapenv:Body>
+       <requestMessage xmlns="urn:schemas-cybersource-com:transaction-data-1.142">
+         <merchantID>29081990</merchantID>
+         <merchantReferenceCode>MRC-29</merchantReferenceCode>
+         <billTo>
+           <firstName>${req.body.billTo.firstname}</firstName>
+           <lastName>${req.body.billTo.lastname}</lastName>
+           <street1>${req.body.billTo.street1}</street1>
+           <street2>${req.body.billTo.street2}</street2>
+           <city>${req.body.billTo.city}</city>
+           <state>${req.body.billTo.state}</state>
+           <postalCode>${req.body.billTo.zipcode}</postalCode>
+           <country>${req.body.billTo.country}</country>
+           <email>${req.body.billTo.email}</email>
+         </billTo>
+        ${a}
+         <purchaseTotals>
+           <currency>${req.body.purchaseTotals.currency}</currency>
+         </purchaseTotals>
+         <card>
+           <accountNumber>${req.body.card.accountNumber}</accountNumber>
+           <expirationMonth>${req.body.card.expirationMonth}</expirationMonth>
+           <expirationYear>${req.body.card.expirationYear}</expirationYear>
+         </card>
+         <ccAuthService run="true"/>
+       </requestMessage>
+     </soapenv:Body>
+    </soapenv:Envelope>`;
+
+
+
 
 
     fs.open(`payment_request/${req.body.clientId}.xml`, "wx", function(err, fd) {
@@ -107,11 +114,12 @@ app.post('/payment', (req, res, next) => {
                     return;
                 }
                 parseString(stdout, function(err, result) {
-                    fs.unlink(`payment_request/${req.body.clientId}.xml`);
+                    //fs.unlink(`payment_request/${req.body.clientId}.xml`);
                     console.log('results is', JSON.stringify(result));
                     console.log('results is', result['soap:Envelope']['$']['soap:Body']);
 
-                    let options = { method: 'POST', uri: config.BOT_SERVSR_PATH + "/callback", json: { address: req.body.address }, timeout: 60000 };
+                    let msgStatus = result["soap:Envelope"]["soap:Body"][0]["c:replyMessage"][0]["c:decision"][0];
+                    let options = { method: 'POST', uri: config.BOT_SERVSR_PATH + "/callback", json: { address: req.body.address, status: msgStatus }, timeout: 60000 };
                     request(options, (err, response, body) => {
 
                         res.send(result);

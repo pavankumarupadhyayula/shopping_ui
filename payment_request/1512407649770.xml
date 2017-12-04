@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+     <soapenv:Header>
+       <wsse:Security soapenv:mustUnderstand="1" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+          <wsse:UsernameToken>
+           <wsse:Username>29081990</wsse:Username>
+           <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText">ZCScmdZ2kBCOmbZwCzB+Jtx33ZwC5EQNd3j5z/hMA+xwnbc1Qebu6l9QPCzqH4LHUx1B2kxJ+QQKGk/LPKwHH60u9UxLxxjVYnuNV2ozW9u86ev/WJwAyQ3+AF19InVPjPAMlHHf6l5lvPgeN+MZQ5UC0elhvpROqUhNukMoVZBcUKXWSBcB5GdGTTXq7s+zHhE7mHGUUYxp+YjgxlGXicDOR6Y7s7Tbt1NawkyzCIfjIXhIz46h9KCuJRtqw0zzJE3B13MKyaKteeguKj+XMmMPjzDISvV9tJSxlLoW9Ja43Td/ylKtwLcITGPdPwAugzl1DcM+pypzcKUuWqFtWQ==</wsse:Password>
+         </wsse:UsernameToken>
+       </wsse:Security>
+     </soapenv:Header>
+     <soapenv:Body>
+       <requestMessage xmlns="urn:schemas-cybersource-com:transaction-data-1.142">
+         <merchantID>29081990</merchantID>
+         <merchantReferenceCode>MRC-29</merchantReferenceCode>
+         <billTo>
+           <firstName>Nitya </firstName>
+           <lastName>Upadhyayula</lastName>
+           <street1>1396 Moint Road</street1>
+           <street2>ST</street2>
+           <city>Chicago</city>
+           <state>IL</state>
+           <postalCode>60018</postalCode>
+           <country>US</country>
+           <email>nitya@gmail.com</email>
+         </billTo>
+        <item id="0"><unitPrice>65</unitPrice><quantity>2</quantity></item><item id="1"><unitPrice>48</unitPrice><quantity>3</quantity></item>
+         <purchaseTotals>
+           <currency>USD</currency>
+         </purchaseTotals>
+         <card>
+           <accountNumber>4111111111111111</accountNumber>
+           <expirationMonth>03</expirationMonth>
+           <expirationYear>2018</expirationYear>
+         </card>
+         <ccAuthService run="true"/>
+       </requestMessage>
+     </soapenv:Body>
+    </soapenv:Envelope>
