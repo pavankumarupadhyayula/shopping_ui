@@ -20,23 +20,23 @@ app.use(bodyParser.json());
 
 app.use(cookieParser())
 
-app.use('/v1', express.static('www'));
+app.use('/', express.static('www'));
 
-app.get('/v1/:clientId', (req, res) => {
+app.get('/:clientId', (req, res) => {
 
     console.log(req.params.clientId);
 
-    let options = { method: 'GET', uri: config.API_SERVER_PATH + '/v1/cart' }
+    let options = { method: 'GET', uri: config.API_SERVER_PATH + '/cart' }
     request(options, (err, response, body) => {
         res.cookie('cart', body);
-        res.redirect('/v1/index.html');
+        res.redirect('/index.html');
     })
 
 })
 
-app.get('/', (req, res) => {
-    res.redirect('/v1/index.html');
-})
+// app.get('/', (req, res) => {
+//     res.redirect('/index.html');
+// })
 
 // app.post('/payments', (req, res) => {
 //     console.log(req.body);
