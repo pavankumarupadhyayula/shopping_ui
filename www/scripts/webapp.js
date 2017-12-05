@@ -40,9 +40,9 @@ angular.module('payment', ['ngCookies'])
                 .then(function(response) {
 
                     if (response.data["soap:Envelope"]["soap:Body"][0]["c:replyMessage"][0]["c:decision"][0] == 'ACCEPT') {
-                        window.location.href = "/v1/success.html";
+                        window.location.href = "/success.html";
                     } else {
-                        window.location.href = "/v1/error.html";
+                        window.location.href = "/error.html";
                     }
                 }, function(err) {
                     console.log(err);
